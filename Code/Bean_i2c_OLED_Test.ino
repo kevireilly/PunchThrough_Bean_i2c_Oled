@@ -1,10 +1,7 @@
-//Powering the display off an I/O pin does not work so right now
-//its always on. The proper design needs a fet connected to an
-//I/O pin to apply and remove power to the display.
 
 //==========================================================//
 //                                                          //
-//    OLED Test Code                                        //                    
+//    Bean OLED Test Code                                        //                    
 //                                                          //
 //==========================================================//
 
@@ -35,62 +32,33 @@ void loop()
   char sz[]= "****";
   char ab[]= "****";
   uint16_t batteryV = 0;
-  //char tmp;
-  
-  //int bat_voltage;
   char tmp[5];
   
    digitalWrite(PWR_ON, HIGH); 
-   
-   //for(int i=0;i<128*8;i++)     // show 128* 64 Logo
-     //SendChar(pgm_read_byte(logo+i));
-    //delay(8000);
-    displayOn();
+   displayOn();
 
    while(1)
    {
     digitalWrite(PWR_ON, HIGH); 
     clear_display();
-    //sendStrXY("1234567",0,4);
     sendStrXY("Temp:",0,4);
     float temperature = Bean.getTemperature();
     dtostrf(temperature,4,1,sz);
     sendStrXY(sz,1,4);
     
-    //bat_voltage = Bean.getBatteryVoltage();
-    //sendStrXY("Voltage:",0,4);//6,4
-    //sprintf(tmp,"%d",bat_voltage);
-    //sendStrXY(tmp,1,4);//7,4
-    
-    //float bat_voltage = Bean.getBatteryVoltage();
-    //dtostrf(bat_voltage,4,1,ab);
-    //sendStrXY("Voltage:",0,4);//6,4
-    //sprintf(tmp,"%d",bat_voltage);
-    //sendStrXY(ab,1,4);//7,4
-    
-    //batteryV = Bean.getBatteryVoltage();
     batteryV = Bean.getBatteryLevel();
-    sendStrXY("Bat Lev:",4,4);//6,4
+    sendStrXY("Bat Lev:",4,4);
     sprintf(tmp,"%d",batteryV);
-    sendStrXY(tmp,5,4);//7,4
-    sendStrXY("%",5,6);//6,4
-   
+    sendStrXY(tmp,5,4);
+    sendStrXY("%",5,6);
     
-    //sprintf(tmp,"%d",tempx);
-    //sendStrXY(tempx,0,4);
-    
-    
-    delay(6000);
+    delay(5000);
     reset_display();
     
-    digitalWrite(PWR_ON, LOW); //Display EN Off
-    Bean.sleep(30000);
+    //digitalWrite(PWR_ON, LOW); //Display EN Off
+    //Bean.sleep(2);
     
-   }      
-    //displayOff();
-      //clear_display();
-   //delay(4000);
-  
+   }       
 }
 
 //==========================================================//
@@ -99,13 +67,8 @@ static void reset_display(void)
 {
   displayOff();
   clear_display();
-
-  
   displayOn();
 }
-
-
-
 
 //==========================================================//
 // Turns display on.
