@@ -11,7 +11,7 @@ Make sure that you have the Arduino and BeanLoader application setup per Punch T
 [Getting Started](http://punchthrough.com/bean/getting-started/) guide
 
 # Setup
-* Clone (https://github.com/sparkfun/Micro_OLED_Breakout)[SparkFun Micro OLED Breakout] repository
+* Clone [SparkFun Micro OLED Breakout](https://github.com/sparkfun/Micro_OLED_Breakout) repository
 * Open the Arduino application
 * Go to Sketch > Import Library > Add Library
 * Locate the cloned `Micro_OLED_Breakout` repository
